@@ -11,7 +11,8 @@ form.addEventListener('submit', e => {
     e.preventDefault();
     const query = input.value.trim();
     if (!query) {
-        iziToast.warning({ message: 'Please enter a search term.' })
+        iziToast.warning({ message: 'Please enter a search term.' });
+        return;
         
     }
 
@@ -30,8 +31,8 @@ form.addEventListener('submit', e => {
             }
             
             createGallery(data.hits);
-        }).catch(
-            () => {
+        })
+        .catch(() => {
                 iziToast.error({ message: 'Something went wrong. Please try again later.', })
             })
         .finally(() => {
